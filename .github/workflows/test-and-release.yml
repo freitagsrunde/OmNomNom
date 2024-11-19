@@ -20,7 +20,6 @@ jobs:
       fail-fast: false
       matrix:
         py:
-          - "3.11"
           - "3.12"
     steps:
       - name: Checkout repository
