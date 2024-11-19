@@ -1,6 +1,6 @@
 """
 This parser tries to download the menu for the TU canteen Cafe Nero which is located in the Volkswagen Bibliothek in
-Berlin. Apparently someone thought it would be a nice idea to upload the daily menu as a PDF document to Dropbox and
+Berlin. Apparently someone thought it would be a nice idea to upload the daily menu as a PDF document to nextcloud and
 include it in the Wordpress website (http://cafenero.net) ... so we have to do some extra parsing to extract the
 content of the PDF.
 """
@@ -29,24 +29,24 @@ def download_website():
     Raises:
         HTTPError: When the underlying requests library fails we also raise a HTTPError.
     """
-    url = 'https://cafenero.net/speisekarte/'
+    url = 'https://cafenero.net/'
     request = requests.get(url)
     request.raise_for_status()
     return request.text
 
 
-def extract_dropbox_link(html):
+def extract_nextcloud_link(html):
     """
-    Parse the HTML code and return the Dropbox link to the menu.
+    Parse the HTML code and return the nextcloud link to the menu.
 
     Args:
-        html (str): The website as HTML that should contain the Dropbox link.
+        html (str): The website as HTML that should contain the nextcloud link.
 
     Returns:
         The link as string.
     """
     soup = bs4.BeautifulSoup(html, 'html.parser')
-    link = [a for a in soup.find_all('a', href=True) if 'Speisekarte als' in a.text and 'dropbox' in a.get('href') and 'speisekarte.pdf' in a.get('href')][0].get('href')
+    link = [a for a in soup.find_all('a', href=True) if 'Speisekarte als' in a.text and 'nextcloud' in a.get('href') and 'download' in a.get('href')][0].get('href')
     return link
 
 
@@ -172,7 +172,7 @@ def main():
     Parse the menu.
     """
     html = download_website()
-    link = extract_dropbox_link(html)
+    link = extract_nextcloud_link(html)
     tmpdir_of_pdf_file = get_pdf(link)
     text_of_pdf_menu = pdf_to_text(tmpdir_of_pdf_file)
     cleaned_text = text_to_menu_list(text_of_pdf_menu)

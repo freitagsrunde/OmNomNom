@@ -11,7 +11,7 @@ from canteens.canteen import FISH, MEAT, VEGAN, VEGGIE
 @pytest.fixture(scope='module')
 def pdf_file():
     html = cafenero.download_website()
-    link = cafenero.extract_dropbox_link(html)
+    link = cafenero.extract_nextcloud_link(html)
     tmpdir_of_pdf = cafenero.get_pdf(link)
     return tmpdir_of_pdf
 
@@ -29,11 +29,11 @@ def test_download_website__with_connect_timeout():
             cafenero.download_website()
 
 
-def test_extract_dropbox_link():
+def test_extract_nextcloud_link():
     html = cafenero.download_website()
-    link = cafenero.extract_dropbox_link(html)
-    assert 'dropbox' in link
-    assert 'speisekarte.pdf' in link
+    link = cafenero.extract_nextcloud_link(html)
+    assert 'nextcloud' in link
+    assert 'download' in link
 
 
 @flaky
@@ -47,7 +47,7 @@ def test_get_pdf__with_connect_timeout():
         with pytest.raises(requests.exceptions.ConnectTimeout):
             m.get(requests_mock.ANY, exc=requests.exceptions.ConnectTimeout)
             html = cafenero.download_website()
-            link = cafenero.extract_dropbox_link(html)
+            link = cafenero.extract_nextcloud_link(html)
             cafenero.get_pdf(link)
 
 
