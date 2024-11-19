@@ -2,7 +2,7 @@ import emoji
 from canteens.canteen import FISH, MEAT, VEGAN, VEGGIE
 
 goodbye = """
-Der Betrieb des OmNomNom Bots wird demnächst eingestellt. Falls du den Bot selber betreiben möchtest, findest du den Source Code unter https://github.com/ekeih/OmNomNom.
+Der Betrieb des OmNomNom Bots wird demnächst eingestellt. Falls du den Bot selber betreiben möchtest, findest du den Source Code unter https://github.com/freitagsrunde/OmNomNom.
 
 Vielen Dank an alle, die den Bot in den letzten fast 10 Jahren genutzt haben oder sogar zum Code beigetragen haben!
 """
@@ -13,9 +13,9 @@ OmNomNom is a Telegram bot to get canteen information. Currently it supports onl
 and most of its answers are in German.
 The bot is available as [@OmnBot](https://telegram.me/OmnBot). Feel free to talk to it and invite it to your groups.
 
-Find out more about it on [Github](https://github.com/ekeih/OmNomNom).
+Find out more about it on [Github](https://github.com/freitagsrunde/OmNomNom).
 
-OmNomNom is licensed under the [GNU AGPL v3](https://github.com/ekeih/OmNomNom#license).
+OmNomNom is licensed under the [GNU AGPL v3](https://github.com/freitagsrunde/OmNomNom#license).
 """
 
 
@@ -53,6 +53,6 @@ Ich markiere Gerichte nach bestem Gewissen, aber ohne Garantie, mit folgenden Sy
 
 Viel Spaß und guten Appetit! %s
 
-PPS: Der Bot ist OpenSource (GNU AGPL v3) und den Code findest du auf [GitHub](https://github.com/ekeih/OmNomNom). %s
+PPS: Der Bot ist OpenSource (GNU AGPL v3) und den Code findest du auf [GitHub](https://github.com/freitagsrunde/OmNomNom). %s
 """ % (VEGAN, VEGGIE, MEAT, FISH, emoji.emojize(':cake:', language='alias'),
        emoji.emojize(':smile:', language='alias'))

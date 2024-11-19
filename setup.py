@@ -27,7 +27,7 @@ setup(
     version=getenv('GITHUB_REF_NAME', default=datetime.now().strftime('%Y.%m.%d.dev%H%M')),
     description='OmNomNom - A simple Telegram bot to get canteen information',
     long_description=readme(),
-    url='https://github.com/ekeih/OmNomNom',
+    url='https://github.com/freitagsrunde/OmNomNom',
     author='Max Rosin',
     author_email='omnbot@hackrid.de',
     license='AGPL',
