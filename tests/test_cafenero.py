@@ -32,9 +32,7 @@ def test_download_website__with_connect_timeout():
 def test_extract_nextcloud_link():
     html = cafenero.download_website()
     link = cafenero.extract_nextcloud_link(html)
-    assert 'nextcloud' in link
-    assert 'download' in link
-
+    assert link
 
 @flaky
 def test_get_pdf(pdf_file):

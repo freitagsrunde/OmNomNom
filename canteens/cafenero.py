@@ -46,8 +46,8 @@ def extract_nextcloud_link(html):
         The link as string.
     """
     soup = bs4.BeautifulSoup(html, 'html.parser')
-    link = [a for a in soup.find_all('a', href=True) if 'Speisekarte als' in a.text and 'nextcloud' in a.get('href') and 'download' in a.get('href')][0].get('href')
-    return link
+    link = [a for a in soup.find_all('a', href=True) if 'speisekarte als' in a.text.lower()][0].get('href')
+    return 'https://cafenero.net/' + link
 
 
 def get_pdf(link):
