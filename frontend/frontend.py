@@ -197,7 +197,7 @@ async def group_message_handler(update: Update, context: CallbackContext) -> Non
     """
     frontend_logger.info('Group members changed')
     frontend_logger.debug(update)
-    my_id = context.bot.get_me().id
+    my_id = (await context.bot.get_me()).id
     if update.message.new_chat_members:
         for member in update.message.new_chat_members:
             if member.id == my_id:
